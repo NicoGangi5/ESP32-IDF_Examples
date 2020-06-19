@@ -1,4 +1,4 @@
-# ------------------------🔐 ESP32-IDF_Examples 🔐------------------------ 
+# ----------------------🔐 ESP32-IDF_Examples 🔐---------------------- 
 
 ###### Autor: Nicolás Gangi  ---📘 Universidad Católica de Córdoba 📘---
 
