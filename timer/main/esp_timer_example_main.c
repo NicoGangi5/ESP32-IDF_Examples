@@ -18,9 +18,11 @@
 #include "driver/gpio.h"
 
 #define BLINK_GPIO 2
+#define TIME 500000         //In [ms]
 u_int8_t flag = 0;
 
 static void periodic_timer_callback(void* arg);
+void timer_init(uint32_t time);
 
 static const char* TAG = "example";
 
@@ -28,10 +30,14 @@ void app_main(void){
     gpio_pad_select_gpio(BLINK_GPIO);
     gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
 
-    /* Create two timers:
-     * 1. a periodic timer which will run every 0.5s, and print a message
-     */
+    timer_init(TIME);
+}
 
+
+void timer_init(uint32_t time){
+    /* Create two timers:
+     * 1. a periodic timer which will run every 0.5s, and print a message and toogle a LED.
+     */
     const esp_timer_create_args_t periodic_timer_args = {
             .callback = &periodic_timer_callback,
             /* name is optional, but may help identify the timer when debugging */
@@ -44,10 +50,10 @@ void app_main(void){
 
 
     /* Start the timers */
-    ESP_ERROR_CHECK(esp_timer_start_periodic(periodic_timer, 500000));
+    ESP_ERROR_CHECK(esp_timer_start_periodic(periodic_timer, time));
     ESP_LOGI(TAG, "Started timers, time since boot: %lld us", esp_timer_get_time());
-
 }
+
 
 static void periodic_timer_callback(void* arg){
     int64_t time_since_boot = esp_timer_get_time();

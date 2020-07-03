@@ -40,9 +40,45 @@ static const char *TAG = "smartconfig_example";
 
 static void smartconfig_example_task(void * parm);
 
+static void event_handler(void* arg, esp_event_base_t event_base,int32_t event_id, void* event_data);
+static void initialise_wifi(void);
+static void smartconfig_example_task(void * parm);
+
+
+void app_main(void){
+    ESP_ERROR_CHECK( nvs_flash_init() );
+
+    gpio_pad_select_gpio(BLINK_GPIO);
+    gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
+    
+
+    xQueue1= xQueueCreate(1, sizeof( uint8_t ));
+    while(xQueue1 == 0){
+        xQueue1= xQueueCreate(1, sizeof( uint8_t ));
+    }
+    initialise_wifi();
+    while (1){
+        if (xQueue1 != NULL){
+            xQueueReceive(xQueue1,&done,(TickType_t )(1000/portTICK_PERIOD_MS));
+        }
+
+        while (done == 1){
+            /* Blink off (output low) */
+            printf("Turning off the LED\n");
+            gpio_set_level(BLINK_GPIO, 0);
+            vTaskDelay(1000 / portTICK_PERIOD_MS);
+            /* Blink on (output high) */
+            printf("Turning on the LED\n");
+            gpio_set_level(BLINK_GPIO, 1);
+            vTaskDelay(1000 / portTICK_PERIOD_MS);
+        } 
+    }   
+}
+
+
+
 static void event_handler(void* arg, esp_event_base_t event_base, 
-                                int32_t event_id, void* event_data)
-{
+                                int32_t event_id, void* event_data){
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
         xTaskCreate(smartconfig_example_task, "smartconfig_example_task", 4096, NULL, 3, NULL);
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
@@ -84,8 +120,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
     }
 }
 
-static void initialise_wifi(void)
-{
+static void initialise_wifi(void){
     ESP_ERROR_CHECK(esp_netif_init());
     s_wifi_event_group = xEventGroupCreate();
     ESP_ERROR_CHECK(esp_event_loop_create_default());
@@ -103,8 +138,7 @@ static void initialise_wifi(void)
     ESP_ERROR_CHECK( esp_wifi_start() );
 }
 
-static void smartconfig_example_task(void * parm)
-{
+static void smartconfig_example_task(void * parm){
     EventBits_t uxBits;
     ESP_ERROR_CHECK( esp_smartconfig_set_type(SC_TYPE_ESPTOUCH) );
     smartconfig_start_config_t cfg = SMARTCONFIG_START_CONFIG_DEFAULT();
@@ -123,35 +157,3 @@ static void smartconfig_example_task(void * parm)
         }
     }
 }
-
-void app_main(void)
-{
-    ESP_ERROR_CHECK( nvs_flash_init() );
-
-    gpio_pad_select_gpio(BLINK_GPIO);
-    gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
-    
-
-    xQueue1= xQueueCreate(1, sizeof( uint8_t ));
-    while(xQueue1 == 0){
-        xQueue1= xQueueCreate(1, sizeof( uint8_t ));
-    }
-    initialise_wifi();
-    while (1){
-        if (xQueue1 != NULL){
-            xQueueReceive(xQueue1,&done,(TickType_t )(1000/portTICK_PERIOD_MS));
-        }
-
-        while (done == 1){
-            /* Blink off (output low) */
-            printf("Turning off the LED\n");
-            gpio_set_level(BLINK_GPIO, 0);
-            vTaskDelay(1000 / portTICK_PERIOD_MS);
-            /* Blink on (output high) */
-            printf("Turning on the LED\n");
-            gpio_set_level(BLINK_GPIO, 1);
-            vTaskDelay(1000 / portTICK_PERIOD_MS);
-        } 
-    }   
-}
-

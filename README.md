@@ -60,46 +60,35 @@ A ".json" file containing the version number allows the firmware to be updated v
 **How to use it:** Modify the code, compile it and upload the ".bin" file to the web host. Then modify the ".json" file inside the host with the new version number (same as the new FW).
 Remember that the new FW must keep the OTA functions in order to continue being able to update.
 
-![Alt text](/OTA_1?raw=true "OTA 1")
-![Alt text](/OTA_2?raw=true "OTA 1")
-
 ☼WORKING! PD.: It does not make use of the CA certification.
 
 
 ### smart_config:
-El protocolo ESP-TOUCH de Espressif implementa la tecnología Smart Config para ayudar a los usuarios a conectar los dispositivos incorporados ESP8266EX y ESP32 a una red Wi-Fi 
-a través de una simple configuración en un teléfono inteligente. 
+The ESP-TOUCH protocol implements the Smart Config technology which allows through a mobile application to share the data of the WiFi network to which it is connected. The module receives this information and automatically connects to the network.
+**How to use it:** Compile and load the program. Use the application "EspTouch: SmartConfig for ESP8266, ESP32" available for Android and iOS.
 
 ☼WORKING!
 
 
 ### station:
-Este ejemplo permite conectarse a una red WiFi especificada en menuconfig.
+This example allows you to connect to a WiFi network specified into the FW.
+**How to use it:** Load the information of the WiFi network you want to connect to into the FW. Compile and load the code.
 
 ☼WORKING!
 
 
 ### tcp:
-Genera una conexion TCP con un broker MQTT el cual es seteado en el código. Una vez lograda la conexión exitosa se procede a la subscripcion, desuscripción y publicacion en un tema dado. Las pruebas con alguna aplicacion de dashboard MQTT para telefono inteligente (en este caso MyMQTT) en la cual se puede susbscrir a un tema y ver los mensajes en viados por el ESP32 o publicar en un tema, en este caso los mensajes se ven en la consola del ESP32. 
-    
-```
-Información del broker MQTT:
-        - Broker host: mqtt.dioty.co
-        - Broker port: 1883
-        - Secure Broker port: 8883. Please download the ca_cert file from GitHub
-        - WebSockets port: 8080
-        - Secure WebSockets port: 8880
-        - User id: 1605558@ucc.edu.ar
-        - Your root topic: "/1605558@ucc.edu.ar/"
-        - Password: Your password will be send to you via email.
-```
+It generates a TCP connection with a MQTT broker which is set in the code. Once the connection is successful we proceed to the subscription, unsubscription and publication in a given topic. The tests with some MQTT dashboard application for smartphone (MyMQTT) in which you can subscribe to a topic and see the messages sent by the ESP32 or publish in a topic, in this case the messages are seen in the console of the ESP32.  
+**How to use it:** Upload the MQTT broker information, compile and load the program. Then you can see the information on the monitor.
 
 ☼WORKING!
 
 
 ### timer:
+It generates a timer every 500ms which is used to change the state of a led. Every half second the code goes to the "periodic_timer_callback" function. In this case the timer is configured on a periodic basis.
+**How to use it:** Set the time. Compile and load the program.
 
 ☼WORKING!
 
 
-Cabe aclarar que cada ejemplo cuenta con su respectivo archivo README dentro de las carpetas contenedoras en donde se encuentra una explicación mas detallada del mismo.
+It should be noted that each example has its respective README file within the container folders where you can find a more detailed explanation of it.
