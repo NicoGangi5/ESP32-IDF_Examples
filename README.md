@@ -56,8 +56,12 @@ It allows to generate a connection to a WiFi network through the ESP-TOUCH smart
 
 
 ### simple_ota_example:
-A ".json" file containing the version number allows the firmware to be updated via OTA. The ".bin" file with the new code must be uploaded to the web host which is detailed in the code. The new firmware is stored in a memory partition dedicated to OTA upgrades, it consists of 2 partitions to put the current version and a previous one.
-**How to use it:** 
+A ".json" file containing the version number allows the firmware to be updated via OTA. The ".bin" file with the new code must be uploaded to the web host which is detailed in the code. The new firmware is stored in a memory partition dedicated to OTA upgrades, it consists of 2 partitions to put the current version and a previous one.Every 30 seconds the FW will search the web host's ".json" file to see if the existing version is equal to or greater than the current one. In case it is higher, the new ".bin" will be downloaded and reboot automatically.
+**How to use it:** Modify the code, compile it and upload the ".bin" file to the web host. Then modify the ".json" file inside the host with the new version number (same as the new FW).
+Remember that the new FW must keep the OTA functions in order to continue being able to update.
+
+![Alt text](/OTA_1?raw=true "OTA 1")
+![Alt text](/OTA_2?raw=true "OTA 1")
 
 ☼WORKING! PD.: It does not make use of the CA certification.
 
