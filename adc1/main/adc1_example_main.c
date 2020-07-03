@@ -27,6 +27,8 @@ adc_channel_t channel = ADC_CHANNEL;
 adc_bits_width_t width = ADC_WIDTH;
 adc_atten_t atten = ADC_ATTEN;
 
+
+
 void app_main(void){
 
     adc1_init(channel, width, atten);

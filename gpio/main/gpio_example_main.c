@@ -36,6 +36,7 @@
 
 void gpio_setup(uint8_t pin, bool dirrection);       //1 = in - 0 = out
 
+
 void app_main(void){
 
     gpio_setup(GPIO_OUTPUT_IO, 0);

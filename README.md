@@ -1,69 +1,78 @@
-# ---------------------🔐 ESP32-IDF_Examples 🔐--------------------- 
+# ------------------------🔐 INDIIC 🔐------------------------ 
 
 ###### Autor: Nicolás Gangi  ---📘 Universidad Católica de Córdoba 📘---
 
+In this repository you can find as of today (07/2020) a total of 12 projects for ESP32 with the IDF framework. 
+ 
 
+### adc1:
+Configuration of the ADC1 module through the "adc1_init()" function. 
+To obtain a value of the AD converter, the function "adc1_get_value()" must be called, which returns an average value of 64 measurements. 
+**How to use it:** Set the corresponding configuration in the FW, compile and load the program.
 
-En este repositorio se encuentran a fecha de hoy (07/04/2020) con un total de 11 proyectos para el ESP32 con el framework IDF. 
-
-
-### ADC:
-
-☼FUNCIONANDO!
+☼WORKING!
 
 
 ### blink:
-Enciende y apaga el led incoporado en la placa del ESP32 DEV KIT V1 (GPIO 2) cada 1 segundo 
+Turns on and off the led embedded in the board of the ESP32 DEV KIT V1 (GPIO 2) every 1 second.
+**How to use it:** Set the PIN number on the FW, compile and load the program.
 
-☼FUNCIONANDO!
+☼WORKING!
 
 
 ### blufi:
-Permite compartir la informacion de una red wifi por medio de una conexión bluetooth. Esto hace que el módulo ESP32 se inicie sin estar conectado a ninguna red WiFi y espere
-por la respectiva informacion en la conexión bluethoot. Las pruebas se hicieron usando la aplicación para dispositivos Andriod y iOS brindada por el fabricante.
+It allows to share the information of a wifi network by means of a bluetooth connection. This makes the ESP32 module start without being connected to any WiFi network and wait for the respective information in the bluetooth connection. The tests were done using the Andriod and iOS device application provided by the manufacturer.
+**How to use it:** Compile and load the FW. Use the "EspBlufi" app.
 
-☼El ejemplo compila y parece funcionar perfectamente pero al momento de conectarlo con la aplicacion falla en la negociación de los datos.
-
-
-### GPIO:
-
-☼FUNCIONANDO!
+☼The example compiles and seems to work perfectly but at the moment of connecting it with the application it fails in the negotiation of the data.
 
 
-### Json:
+### gpio:
+Configure GPIO pins as input or output as indicated by the "gpio_setup()" function.
+**How to use it:** Set the PIN number, IN or OUT on the FW, compile and load the program.
 
-☼FUNCIONANDO!
+☼WORKING!
 
 
-### PWM:
+### json:
+Create, read and print on screen Json objects.
+**How to use it:** Compile, load the program and view the monitor.
 
-☼FUNCIONANDO!
+☼WORKING!
+
+
+### pwm:
+First the configuration structure of the timer module is created and loaded to be PWM. Then the channel is configured to support PWM outputs. Once the structures are configured they are loaded and started by means of "pwm_init()". The functions "pwm_freq()" and "pwm_duty()" are used to modify the frequency and duty of the PWM module respectively anywhere in the FW. These functions change the configuration and update it.
+**How to use it:** Load the data into the timer and channel structures. Then compile and load the program. 
+
+☼WORKING!
 
 
 ### sc_mqtt:
-Permite generar una conexion a una red wifi por medio del protocolo ESP-TOUCH smart configuration y una vez lo grado esto intenta acceder a un broker MQTT para subscribirse y publicar topics.
+It allows to generate a connection to a WiFi network through the ESP-TOUCH smart configuration protocol and once this is achieved, it tries to access a MQTT broker to subscribe and publish topics.
+**TODO:** First see if the WiFi network information is in memory. If it is, connect to it. If not, use ESP-TOUCH to get the information, connect and save it in memory. 
 
 ☼WORKING ON
 
 
 ### simple_ota_example:
-Por medio de un archivo .json el cual contiene el numero de version permite la actualización del firmware via OTA. El archivo .bin con el nuevo código debe ser subido al host web el cual
-se detalla en el código. El firmware nuevo se aloja en una partición de memoria destinada a actualizaciones OTA, consta de 2 particiones para poner tener la versión actual y una anterior. 
+A ".json" file containing the version number allows the firmware to be updated via OTA. The ".bin" file with the new code must be uploaded to the web host which is detailed in the code. The new firmware is stored in a memory partition dedicated to OTA upgrades, it consists of 2 partitions to put the current version and a previous one.
+**How to use it:** 
 
-☼FUNCIONANDO! PD.: No hace uso de la certificacion CA.
+☼WORKING! PD.: It does not make use of the CA certification.
 
 
 ### smart_config:
 El protocolo ESP-TOUCH de Espressif implementa la tecnología Smart Config para ayudar a los usuarios a conectar los dispositivos incorporados ESP8266EX y ESP32 a una red Wi-Fi 
 a través de una simple configuración en un teléfono inteligente. 
 
-☼FUNCIONANDO!
+☼WORKING!
 
 
 ### station:
 Este ejemplo permite conectarse a una red WiFi especificada en menuconfig.
 
-☼FUNCIONANDO!
+☼WORKING!
 
 
 ### tcp:
@@ -81,8 +90,12 @@ Información del broker MQTT:
         - Password: Your password will be send to you via email.
 ```
 
-☼FUNCIONANDO!
+☼WORKING!
 
+
+### timer:
+
+☼WORKING!
 
 
 Cabe aclarar que cada ejemplo cuenta con su respectivo archivo README dentro de las carpetas contenedoras en donde se encuentra una explicación mas detallada del mismo.

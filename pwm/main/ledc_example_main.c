@@ -1,4 +1,4 @@
-/* LEDC (LED Controller) fade example
+c/* LEDC (LED Controller) fade example
 
    This example code is in the Public Domain (or CC0 licensed, at your option.)
 
@@ -93,9 +93,8 @@ void app_main(void){
             pwm_duty(ledc_channel, i);
 
             vTaskDelay(1 / portTICK_PERIOD_MS);
-            //printf("Duty: %d ", i);
+            printf("Duty: %d ", i);
         }
-        
     }
 }
 
