@@ -60,8 +60,10 @@ A ".json" file containing the version number allows the firmware to be updated v
 **How to use it:** Modify the code, compile it and upload the ".bin" file to the web host. Then modify the ".json" file inside the host with the new version number (same as the new FW).
 Remember that the new FW must keep the OTA functions in order to continue being able to update.
 
-<img width="897" alt="OTA_1" src="https://user-images.githubusercontent.com/29799634/86482069-92a6ca80-bd27-11ea-865e-e439c6449d58.png">
+
 <img width="1438" alt="OTA_2" src="https://user-images.githubusercontent.com/29799634/86482074-95a1bb00-bd27-11ea-91dc-25b7aa4a60a5.png">
+<img width="897" alt="OTA_1" src="https://user-images.githubusercontent.com/29799634/86482069-92a6ca80-bd27-11ea-865e-e439c6449d58.png">
+
 
 ☼WORKING! PD.: It does not make use of the CA certification.
 
