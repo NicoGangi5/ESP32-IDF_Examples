@@ -8,6 +8,7 @@ In this repository you can find as of today (07/2020) a total of 12 projects for
 ### adc1:
 Configuration of the ADC1 module through the "adc1_init()" function. 
 To obtain a value of the AD converter, the function "adc1_get_value()" must be called, which returns an average value of 64 measurements. 
+
 **How to use it:** Set the corresponding configuration in the FW, compile and load the program.
 
 ☼WORKING!
@@ -15,6 +16,7 @@ To obtain a value of the AD converter, the function "adc1_get_value()" must be c
 
 ### blink:
 Turns on and off the led embedded in the board of the ESP32 DEV KIT V1 (GPIO 2) every 1 second.
+
 **How to use it:** Set the PIN number on the FW, compile and load the program.
 
 ☼WORKING!
