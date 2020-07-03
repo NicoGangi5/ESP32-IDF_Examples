@@ -1,4 +1,4 @@
-# -----------------------🔐 INDIIC 🔐----------------------- 
+# --------------------🔐 ESP32 - IDF 🔐-------------------- 
 
 ###### Autor: Nicolás Gangi  ---📘 Universidad Católica de Córdoba 📘---
 
@@ -59,6 +59,9 @@ It allows to generate a connection to a WiFi network through the ESP-TOUCH smart
 A ".json" file containing the version number allows the firmware to be updated via OTA. The ".bin" file with the new code must be uploaded to the web host which is detailed in the code. The new firmware is stored in a memory partition dedicated to OTA upgrades, it consists of 2 partitions to put the current version and a previous one.Every 30 seconds the FW will search the web host's ".json" file to see if the existing version is equal to or greater than the current one. In case it is higher, the new ".bin" will be downloaded and reboot automatically.
 **How to use it:** Modify the code, compile it and upload the ".bin" file to the web host. Then modify the ".json" file inside the host with the new version number (same as the new FW).
 Remember that the new FW must keep the OTA functions in order to continue being able to update.
+
+<img width="897" alt="OTA_1" src="https://user-images.githubusercontent.com/29799634/86482069-92a6ca80-bd27-11ea-865e-e439c6449d58.png">
+<img width="1438" alt="OTA_2" src="https://user-images.githubusercontent.com/29799634/86482074-95a1bb00-bd27-11ea-91dc-25b7aa4a60a5.png">
 
 ☼WORKING! PD.: It does not make use of the CA certification.
 
